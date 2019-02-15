@@ -7,7 +7,7 @@
 但是其他的呢？我们应该如何触发这些事件？
 
 ### 模拟事件
-```
+```js
 var input = document.querySelector('input');
 var event = new Event('blur');
 input.dispatchEvent(event);
@@ -16,7 +16,7 @@ input.dispatchEvent(event);
 `input.dispatchEvent(event)` -> 在 input 元素上触发 event 事件
 如果对应的事件处理函数需要其他值，可以在 event 上添加。
 
-```
+```js
 var input = document.querySelector('input');
 var event = new Event('keydown');
 event.keyCode = 13;
@@ -25,7 +25,7 @@ input.dispatchEvent(event);
 但是这种方式模拟触发的事件，是否和真正触发的事件一样呢？
 让我们来测试一下：
 
-```
+```js
 // 添加事件监听，打印 e
 var input = document.querySelector('input');
 input.addEventListener('keydown', e => console.log(e));
@@ -42,7 +42,7 @@ input.dispatchEvent(event);
 我们模拟触发的事件打印出来是 `Event...` 而真正触发的事件打印出来是 `KeyboardEvent...`。
 我们试试用 KeyboardEvent 来触发事件吧。
 
-```
+```js
 var input = document.querySelector('input');
 var event = new KeyboardEvent('keydown');
 input.dispatchEvent(event);
@@ -56,7 +56,7 @@ input.dispatchEvent(event);
 
 在老版本浏览器下要使用另一种方式触发。
 
-```
+```js
 var input = document.querySelector('input');
 var event = document.createEvent('HTMLEvents');
 event.initEvent('mousedown', true, true);
@@ -68,7 +68,7 @@ input.dispatchEvent(event);
 
 关于键盘模拟触发事件，网上有一位大佬写了一个公共方法挺好用的：
 
-```
+```js
 function fireKeyEvent(el, evtType, keyCode) {
     var doc = el.ownerDocument,
         win = doc.defaultView || doc.parentWindow,
