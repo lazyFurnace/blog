@@ -1,0 +1,11 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lazyFurnace/blog.git",
+  "author": "李齐 <787139384@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gatsby-cli": "^2.12.11"
+  }
+}
